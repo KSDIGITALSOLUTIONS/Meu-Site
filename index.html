@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Digital Solutions | Tecnologia que Impulsiona Negócios</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo.icon.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9e29c 50%, #b8860b 100%);
+            --dark-bg: #0a0a0a;
+            --card-bg: #151515;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .font-serif-luxury {
+            font-family: 'Cinzel', serif;
+        }
+
+        .gold-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .gold-glow {
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
+        }
+
+        .gold-button {
+            background: var(--gold-gradient);
+            color: black;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .gold-button::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .gold-button:hover::after {
+            left: 100%;
+        }
+
+        .gold-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .glass-header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .portfolio-card {
+            background: var(--card-bg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-12px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .hero-overlay {
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0%, rgba(10, 10, 10, 1) 80%);
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .page-content {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .hidden-page {
+            display: none;
+            opacity: 0;
+        }
+
+        .detail-section-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid #d4af37;
+            padding: 2rem;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .detail-section-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(5px);
+        }
+
+        .tech-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-item {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 0.75rem;
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+            color: #555;
+        }
+
+        .social-icon:hover {
+            color: #d4af37;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Principal -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-header px-4 md:px-6 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showMainPage()">
+                <img src="img/logo.icon.jpeg" alt="KS Logo" class="logo-img rounded-sm">
+                <span class="hidden sm:block text-[10px] md:text-xs uppercase tracking-[0.3em] font-light text-white">Digital Solutions</span>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-8 text-xs uppercase tracking-widest" id="mainNav">
+                <a href="#inicio" class="nav-link hover:text-white">Início</a>
+                <a href="#sobre" class="nav-link hover:text-white">Sobre</a>
+                <a href="#servicos" class="nav-link hover:text-white">Serviços</a>
+                <a href="#portfolio" class="nav-link hover:text-white">Portfólio</a>
+                <a href="#contato" class="nav-link hover:text-white">Contato</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/5551980651257" target="_blank" class="hidden sm:inline-flex text-[10px] gold-text border border-yellow-600/30 px-4 py-2 rounded-full hover:bg-yellow-600/10 transition">WhatsApp</a>
+                <button class="lg:hidden text-2xl gold-text p-2" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENU MOBILE -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center space-y-8 text-xl uppercase tracking-widest hidden">
+        <a href="#inicio" class="mobile-nav-link text-white" onclick="hideMenu(); showMainPage()">Início</a>
+        <a href="#sobre" class="mobile-nav-link text-white" onclick="hideMenu(); showMainPage()">Sobre</a>
+        <a href="#servicos" class="mobile-nav-link text-white" onclick="hideMenu(); showMainPage()">Serviços</a>
+        <a href="#portfolio" class="mobile-nav-link text-white" onclick="hideMenu(); showMainPage()">Portfólio</a>
+        <button id="closeMenu" class="absolute top-6 right-6 text-3xl gold-text" onclick="hideMenu()"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- PÁGINA PRINCIPAL -->
+    <main id="mainPage" class="page-content">
+        <!-- Secção Hero -->
+        <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+            <div class="absolute inset-0 hero-overlay"></div>
+            <div class="relative z-10 text-center px-6 w-full max-w-4xl">
+                <img src="img/logo.icon.jpeg" alt="KS Digital Solutions" class="w-48 sm:w-64 md:w-80 mx-auto mb-8 rounded-lg shadow-2xl gold-glow" data-aos="zoom-in">
+                <p class="max-w-lg mx-auto text-gray-400 text-xs sm:text-sm md:text-lg mb-10 leading-relaxed uppercase tracking-[0.2em] italic" data-aos="fade-up">
+                    Tecnologia que impulsiona negócios
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6" data-aos="fade-up">
+                    <a href="#portfolio" class="gold-button px-10 py-5 rounded-sm text-xs uppercase tracking-widest">Explorar Portfólio</a>
+                    <a href="https://wa.me/5551980651257" target="_blank" class="border border-yellow-600 px-10 py-5 rounded-sm text-xs uppercase tracking-widest hover:bg-yellow-600/10 transition text-center text-white">Falar Connosco</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção Sobre -->
+        <section id="sobre" class="py-24 px-6 bg-[#0c0c0c]">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="font-serif-luxury text-3xl gold-text mb-6">Sobre a KS Digital</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Somos uma agência de tecnologia boutique focada em criar soluções digitais que combinam estética de luxo com funcionalidade robusta. Nossa missão é elevar a presença online de negócios que prezam pela excelência.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Desde o design de interfaces minimalistas até o desenvolvimento de sistemas complexos, cada linha de código é pensada para gerar impacto e resultados tangíveis para os nossos parceiros.
+                    </p>
+                </div>
+                <div class="relative" data-aos="zoom-in">
+                    <div class="aspect-square rounded-2xl border border-yellow-600/20 bg-zinc-900 overflow-hidden">
+                        <img src="img/logo.icon.jpeg" alt="Elegância Digital" class="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition duration-700">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-yellow-600/10 backdrop-blur-md border border-yellow-600/30 p-8 rounded-xl hidden md:block">
+                        <span class="text-4xl font-serif-luxury gold-text block">100%</span>
+                        <span class="text-[10px] uppercase tracking-widest">Foco em Qualidade</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Serviços -->
+        <section id="servicos" class="py-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="font-serif-luxury text-3xl md:text-5xl gold-text mb-4">Serviços Especializados</h2>
+                    <p class="text-gray-500 uppercase tracking-widest text-[10px]">O que fazemos de melhor</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-zinc-900/40 p-10 border border-white/5 rounded-xl hover:border-yellow-600/30 transition duration-500" data-aos="fade-up">
+                        <i class="fas fa-laptop-code text-4xl gold-text mb-6 block"></i>
+                        <h3 class="text-white uppercase tracking-widest text-sm mb-4">Desenvolvimento Web</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed">Websites de alta performance com design exclusivo e otimização total para motores de busca.</p>
+                    </div>
+                    <div class="bg-zinc-900/40 p-10 border border-white/5 rounded-xl hover:border-yellow-600/30 transition duration-500" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-mobile-alt text-4xl gold-text mb-6 block"></i>
+                        <h3 class="text-white uppercase tracking-widest text-sm mb-4">Aplicações Mobile</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed">Apps nativos e híbridos focados na experiência do utilizador e integração fluida com sistemas.</p>
+                    </div>
+                    <div class="bg-zinc-900/40 p-10 border border-white/5 rounded-xl hover:border-yellow-600/30 transition duration-500" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-shield-alt text-4xl gold-text mb-6 block"></i>
+                        <h3 class="text-white uppercase tracking-widest text-sm mb-4">Segurança & Cloud</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed">Infraestrutura em nuvem escalável com os mais altos padrões de criptografia e proteção de dados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Portfólio -->
+        <section id="portfolio" class="py-20 md:py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="font-serif-luxury text-3xl md:text-5xl gold-text mb-4">Portfólio</h2>
+                    <p class="text-gray-500 uppercase tracking-widest text-[10px]">Estudos de Caso Selecionados</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-10">
+                    <div class="portfolio-card rounded-lg overflow-hidden group block" data-aos="fade-up">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="img/websitebarber.png" alt="Portal Barbearia Gentleman" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                                <button onclick="showDetailsPage('barber')" class="gold-button px-8 py-3 text-[10px] uppercase tracking-widest">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <span class="text-[10px] gold-text uppercase tracking-widest mb-2 block font-semibold">Desenvolvimento Web</span>
+                            <h5 class="text-lg font-bold uppercase tracking-tight">Portal Barbearia</h5>
+                        </div>
+                    </div>
+                    <div class="portfolio-card rounded-lg overflow-hidden group block" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative aspect-video overflow-hidden">
+                            <img src="img/Appmobilepetshop.png" alt="Experiência Mobile Pet Shop KS" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                                <button onclick="showDetailsPage('petshop')" class="gold-button px-8 py-3 text-[10px] uppercase tracking-widest">Ver Detalhes</button>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <span class="text-[10px] gold-text uppercase tracking-widest mb-2 block font-semibold">Desenvolvimento App</span>
+                            <h5 class="text-lg font-bold uppercase tracking-tight">Experiência Mobile Pet Shop KS</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção Contacto -->
+        <section id="contato" class="py-24 px-6 bg-black">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <h2 class="font-serif-luxury text-3xl gold-text mb-12 uppercase">Vamos Iniciar o Seu Projeto?</h2>
+                <a href="https://wa.me/5551980651257" target="_blank" class="gold-button px-12 py-6 rounded-full text-sm uppercase tracking-[0.2em]">Falar com Especialista</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- PÁGINA DE DETALHES -->
+    <div id="detailsPage" class="page-content hidden-page pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <button onclick="showMainPage()" class="mb-10 flex items-center space-x-2 text-gray-500 hover:text-white transition group">
+                <i class="fas fa-arrow-left group-hover:-translate-x-2 transition-transform"></i>
+                <span class="text-[10px] uppercase tracking-widest">Voltar para o Portfólio</span>
+            </button>
+            <div class="mb-16">
+                <span id="detailCategory" class="gold-text text-xs uppercase tracking-[0.4em] mb-4 block">Estudo de Caso</span>
+                <h1 id="detailTitle" class="font-serif-luxury text-4xl md:text-6xl text-white">Documentação</h1>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-7 space-y-12">
+                    <section>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <i class="fas fa-eye gold-text"></i>
+                            <h2 class="text-lg font-bold uppercase tracking-widest text-white">Visão Geral</h2>
+                        </div>
+                        <div class="detail-section-card">
+                            <p id="detailDesc" class="text-gray-400 leading-relaxed italic"></p>
+                        </div>
+                    </section>
+                    <section id="featuresSection"></section>
+                </div>
+                <div class="lg:col-span-5 space-y-12">
+                    <section>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <i class="fas fa-microchip gold-text"></i>
+                            <h2 class="text-lg font-bold uppercase tracking-widest text-white">Stack Tecnológico</h2>
+                        </div>
+                        <div id="techStack" class="flex flex-wrap gap-3"></div>
+                    </section>
+                    <section id="extraInfo"></section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Geral -->
+    <footer class="py-16 px-6 border-t border-white/5 bg-[#050505]">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            <img src="img/logo.icon.jpeg" alt="KS Logo" class="h-16 w-auto mx-auto mb-8 rounded-sm opacity-60">
+            
+            <!-- Redes Sociais: Apenas Instagram e WhatsApp -->
+            <div class="flex space-x-12 mb-12">
+                <a href="https://instagram.com" target="_blank" class="social-icon text-3xl"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5551980651257" target="_blank" class="social-icon text-3xl"><i class="fab fa-whatsapp"></i></a>
+            </div>
+
+            <nav class="flex flex-wrap justify-center gap-8 mb-12 text-[10px] uppercase tracking-[0.3em] text-gray-500">
+                <a href="#inicio" onclick="showMainPage()" class="hover:text-white transition">Início</a>
+                <a href="#sobre" onclick="showMainPage()" class="hover:text-white transition">Sobre</a>
+                <a href="#servicos" onclick="showMainPage()" class="hover:text-white transition">Serviços</a>
+                <a href="#portfolio" onclick="showMainPage()" class="hover:text-white transition">Portfólio</a>
+            </nav>
+
+            <p class="text-golden-900 text-[8px] uppercase tracking-widest">&copy; 2026 KS Digital Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        const mainPage = document.getElementById('mainPage');
+        const detailsPage = document.getElementById('detailsPage');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        const projects = {
+            barber: {
+                category: "Estudo de Caso: Web Premium",
+                title: "Portal Barbearia Gentleman",
+                desc: '"Este projeto foi desenvolvido para uma barbearia moderna com foco em atrair novos clientes e agendamento online. O objetivo foi criar uma experiência visual premium que transmitisse confiança e sofisticação."',
+                techs: ["HTML5", "CSS3 / Tailwind", "JS ES6", "Animações AOS", "SEO"],
+                features: `
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-list-check gold-text"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-widest text-white">Soluções</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="feature-item"><span class="gold-text">#01</span> Interface visual luxuosa desenhada para público masculino exigente.</div>
+                        <div class="feature-item"><span class="gold-text">#02</span> Botões estratégicos para agendamento via WhatsApp.</div>
+                        <div class="feature-item"><span class="gold-text">#03</span> Otimização de SEO local para buscas no Google.</div>
+                    </div>
+                `,
+                extra: `
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-chart-line gold-text"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-widest text-white">Resultados</h2>
+                    </div>
+                    <div class="bg-zinc-900/80 p-6 rounded-lg border border-white/5">
+                        <ul class="space-y-2 text-[10px] uppercase tracking-widest">
+                            <li class="flex justify-between border-b border-white/5 pb-2"><span>Novas Reservas</span> <span class="text-green-500">+25%</span></li>
+                        </ul>
+                    </div>
+                `
+            },
+            petshop: {
+                category: "Estudo de Caso: App Full Stack",
+                title: "Pet Shop KS - Gestão & Agendamento",
+                desc: 'O Pet Shop KS é uma plataforma completa desenvolvida para modernizar a gestão pet, incluindo App Móvel e Painel Admin sob a identidade "Preto e Ouro".',
+                techs: ["React Native", "Node.js", "Express", "MongoDB", "Render"],
+                features: `
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-mobile-screen gold-text"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-widest text-white">Funcionalidades Cliente</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="feature-item">🐾 Sistema de Fidelidade Único (ID KS-XXXX).</div>
+                        <div class="feature-item">📅 Calendário de Banho, Tosa e Vacinas.</div>
+                        <div class="feature-item">🚚 Pedidos de Produtos & Delivery.</div>
+                    </div>
+                `,
+                extra: `
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-shield-halved gold-text"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-widest text-white">Infraestrutura</h2>
+                    </div>
+                    <div class="bg-zinc-900/80 p-6 rounded-lg border border-white/5 text-[10px] uppercase space-y-2">
+                        <div class="flex justify-between"><span>DB</span> <span>MongoDB Atlas</span></div>
+                        <div class="flex justify-between"><span>Cloud</span> <span>Render</span></div>
+                    </div>
+                `
+            }
+        };
+
+        function showDetailsPage(projectId) {
+            const data = projects[projectId];
+            if(!data) return;
+            document.getElementById('detailCategory').innerText = data.category;
+            document.getElementById('detailTitle').innerText = data.title;
+            document.getElementById('detailDesc').innerText = data.desc;
+            const techContainer = document.getElementById('techStack');
+            techContainer.innerHTML = '';
+            data.techs.forEach(t => {
+                const span = document.createElement('span');
+                span.className = 'tech-tag';
+                span.innerText = t;
+                techContainer.appendChild(span);
+            });
+            document.getElementById('featuresSection').innerHTML = data.features;
+            document.getElementById('extraInfo').innerHTML = data.extra;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            mainPage.style.opacity = '0';
+            setTimeout(() => {
+                mainPage.classList.add('hidden-page');
+                detailsPage.classList.remove('hidden-page');
+                setTimeout(() => detailsPage.style.opacity = '1', 50);
+            }, 500);
+        }
+
+        function showMainPage() {
+            detailsPage.style.opacity = '0';
+            setTimeout(() => {
+                detailsPage.classList.add('hidden-page');
+                mainPage.classList.remove('hidden-page');
+                setTimeout(() => mainPage.style.opacity = '1', 50);
+            }, 500);
+        }
+
+        document.getElementById('menuToggle').onclick = () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+
+        function hideMenu() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        window.onscroll = () => {
+            const header = document.querySelector('header');
+            header.style.padding = window.scrollY > 50 ? '0.5rem' : '1rem';
+        };
+    </script>
+</body>
+</html>
